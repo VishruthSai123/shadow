@@ -17,7 +17,7 @@ function AuthCodeErrorContent() {
         <div className="flex-center size-full">
           <div className="flex-center flex-col">
             <Image
-              src="/assets/images/logo.svg"
+              src="/assets/images/shadow_logo.png"
               alt="logo"
               width={270}
               height={36}

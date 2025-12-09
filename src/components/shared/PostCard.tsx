@@ -17,6 +17,8 @@ type PostCardProps = {
 const PostCard = ({ post }: PostCardProps) => {
   const { user } = useUserContext();
   const [showComments, setShowComments] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const { mutate: deletePost } = useDeletePost();
 
   if (!post.creator) return;
@@ -61,7 +63,7 @@ const PostCard = ({ post }: PostCardProps) => {
               {post.category && (
                 <>
                   •
-                  <span className="subtle-semibold lg:small-regular text-primary-500 capitalize">
+                  <span className="subtle-semibold lg:small-regular text-light-3 capitalize">
                     {POST_CATEGORIES.find(cat => cat.value === post.category)?.label || post.category}
                   </span>
                 </>
@@ -97,21 +99,45 @@ const PostCard = ({ post }: PostCardProps) => {
 
       <Link href={`/posts/${post.id}`}>
         <div className="small-medium lg:base-medium py-5">
-          <p>{post.caption}</p>
-          <ul className="flex gap-1 mt-2">
-            {post.tags.map((tag: string, index: string) => (
-              <li key={`${tag}${index}`} className="text-light-3 small-regular">
+          <p className="whitespace-pre-wrap">{post.caption}</p>
+          <ul className="flex flex-wrap gap-1 mt-2">
+            {(post.tags || []).map((tag: string, index: number) => (
+              <li key={`${tag}${index}`} className="text-light-3 small-regular hover:text-primary-500 transition-colors">
                 #{tag}
               </li>
             ))}
           </ul>
         </div>
 
-        <img
-          src={post.image_url || "/assets/icons/profile-placeholder.svg"}
-          alt="post image"
-          className="post-card_img"
-        />
+        {/* Adaptive Image Container */}
+        <div className="relative w-full overflow-hidden rounded-2xl bg-dark-4">
+          {/* Loading skeleton */}
+          {!imageLoaded && !imageError && (
+            <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-dark-4 via-dark-3 to-dark-4 bg-[length:200%_100%]" />
+          )}
+          
+          {/* Actual image with adaptive height */}
+          <img
+            src={post.image_url || "/assets/icons/profile-placeholder.svg"}
+            alt="post image"
+            className={`w-full h-auto max-h-[600px] object-contain transition-opacity duration-300 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ minHeight: imageLoaded ? 'auto' : '200px' }}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => {
+              setImageError(true);
+              setImageLoaded(true);
+            }}
+          />
+          
+          {/* Error fallback */}
+          {imageError && (
+            <div className="flex items-center justify-center h-48 text-light-3">
+              <p>Image could not be loaded</p>
+            </div>
+          )}
+        </div>
       </Link>
 
       <PostStats 

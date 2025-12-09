@@ -11,6 +11,16 @@ const nextConfig = {
       },
     ],
   },
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+  },
+  // Reduce JavaScript bundle size
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Enable SWC minification
+  swcMinify: true,
 }
 
 module.exports = nextConfig

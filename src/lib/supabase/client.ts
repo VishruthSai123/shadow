@@ -15,7 +15,7 @@ export function createClient() {
       // Suppress auth session missing warnings in console
       global: {
         headers: {
-          'x-client-info': 'socialens-nextjs',
+          'x-client-info': 'shadow-nextjs',
         },
       },
     }

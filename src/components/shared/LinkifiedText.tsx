@@ -33,7 +33,7 @@ const LinkifiedText = ({ text, className = "" }: LinkifiedTextProps) => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-500 hover:text-primary-600 underline transition-colors"
+              className="text-primary-500 hover:text-light-2 underline transition-colors"
               onClick={(e) => e.stopPropagation()} // Prevent any parent click handlers
             >
               {part}

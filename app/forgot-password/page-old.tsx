@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
         <Form {...form}>
           <div className="sm:w-420 flex-center flex-col">
             <Image
-              src="/assets/images/logo.svg"
+              src="/assets/images/shadow_logo.png"
               alt="logo"
               width={270}
               height={36}

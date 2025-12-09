@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -20,10 +20,12 @@ const LeftSidebar = () => {
   const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
   const { data: hasAdminAccess } = useCheckAdminAccess();
   
-  // Debug logging
+  // Prefetch routes on mount for faster navigation
   useEffect(() => {
-    console.log('LeftSidebar user state:', { user: user?.name, isLoading, isAuthenticated: !!user })
-  }, [user, isLoading])
+    sidebarLinks.forEach(link => {
+      router.prefetch(link.route);
+    });
+  }, [router]);
 
   const { mutate: signOut } = useSignOutAccount();
 
@@ -52,7 +54,7 @@ const LeftSidebar = () => {
       <div className="flex flex-col gap-11">
         <Link href="/" className="flex gap-3 items-center">
           <img
-            src="/assets/images/logo.svg"
+            src="/assets/images/shadow_logo.png"
             alt="logo"
             width={170}
             height={36}
@@ -83,27 +85,34 @@ const LeftSidebar = () => {
           </>
         )}
 
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col gap-2">
           {filteredSidebarLinks.map((link: INavLink) => {
             const isActive = pathname === link.route;
 
             return (
               <li
                 key={link.label}
-                className={`leftsidebar-link group ${
-                  isActive && "bg-primary-500"
-                }`}>
+                className="group">
                 <Link
                   href={link.route}
-                  className="flex gap-4 items-center p-4">
+                  className={`flex gap-4 items-center p-4 rounded-xl transition-all duration-200 ${
+                    isActive 
+                      ? 'bg-primary-500/10 border-l-4 border-primary-500' 
+                      : 'hover:bg-dark-4/50'
+                  }`}>
                   <img
                     src={link.imgURL}
                     alt={link.label}
-                    className={`group-hover:invert-white ${
-                      isActive && "invert-white"
-                    }`}
+                    className="w-6 h-6 transition-all duration-200"
+                    style={isActive ? { filter: 'brightness(0) saturate(100%) invert(21%) sepia(96%) saturate(4949%) hue-rotate(342deg) brightness(91%) contrast(94%)' } : {}}
                   />
-                  {link.label}
+                  <span className={`transition-all duration-200 ${
+                    isActive 
+                      ? 'text-primary-500 font-semibold' 
+                      : 'text-light-2 group-hover:text-light-1'
+                  }`}>
+                    {link.label}
+                  </span>
                 </Link>
               </li>
             );

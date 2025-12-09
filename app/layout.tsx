@@ -6,12 +6,14 @@ import { AuthProvider } from '../src/context/SupabaseAuthContext'
 import { NotificationProvider } from '../src/context/NotificationContext'
 import NotificationManager from '../src/components/NotificationManager'
 import { Toaster } from '../src/components/ui/toaster'
+import NavigationLoader from '../src/components/shared/NavigationLoader'
+import { Suspense } from 'react'
 import '../src/lib/utils/suppressAuthWarnings'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Socialens',
+  title: 'Shadow',
   description: 'A social media application powered by Next.js and Supabase',
   icons: {
     icon: '/assets/images/tablogo.ico',
@@ -29,6 +31,9 @@ export default function RootLayout({
         <QueryProvider>
           <AuthProvider>
             <NotificationProvider>
+              <Suspense fallback={null}>
+                <NavigationLoader />
+              </Suspense>
               {children}
               <NotificationManager />
               <Toaster />

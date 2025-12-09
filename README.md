@@ -1,6 +1,6 @@
-# SociaLens - Advanced Social Media Platform
+# Shadow - Advanced Social Media Platform
 
-SociaLens is a feature-rich social media platform built with Next.js 15, React, TypeScript, and Supabase. It combines modern design with powerful functionality including real-time user activity tracking, comprehensive admin management, and advanced user engagement features.
+Shadow is a feature-rich social media platform built with Next.js 15, React, TypeScript, and Supabase. It combines modern design with powerful functionality including real-time user activity tracking, comprehensive admin management, and advanced user engagement features.
 
 ## ✨ Key Features
 
@@ -55,8 +55,8 @@ SociaLens is a feature-rich social media platform built with Next.js 15, React, 
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/maazajaz/socialens.git
-cd socialens-nextjs
+git clone https://github.com/maazajaz/shadow.git
+cd shadow
 ```
 
 2. **Install dependencies:**
@@ -311,8 +311,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 🌐 Official Links
 
-- **Live Application**: [https://socialens.in](https://socialens.in)
-- **GitHub Repository**: [https://github.com/maazajaz/socialens](https://github.com/maazajaz/socialens)
+- **Live Application**: [https://shadow.in](https://shadow.in)
+- **GitHub Repository**: [https://github.com/maazajaz/shadow](https://github.com/maazajaz/shadow)
 - **Documentation**: Available in repository wiki
 
 ## 👨‍💻 Author
@@ -342,10 +342,10 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 📊 Repository Stats
 
-![GitHub stars](https://img.shields.io/github/stars/maazajaz/socialens)
-![GitHub forks](https://img.shields.io/github/forks/maazajaz/socialens)
-![GitHub issues](https://img.shields.io/github/issues/maazajaz/socialens)
-![GitHub license](https://img.shields.io/github/license/maazajaz/socialens)
+![GitHub stars](https://img.shields.io/github/stars/maazajaz/shadow)
+![GitHub forks](https://img.shields.io/github/forks/maazajaz/shadow)
+![GitHub issues](https://img.shields.io/github/issues/maazajaz/shadow)
+![GitHub license](https://img.shields.io/github/license/maazajaz/shadow)
 
 ---
 

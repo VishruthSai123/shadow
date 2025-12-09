@@ -94,7 +94,7 @@ const AllUsers = () => {
                   ) : (
                     <>
                       <span>Found {otherUsers.length} user{otherUsers.length !== 1 ? 's' : ''} matching</span>
-                      <span className="text-primary-500 font-semibold">"{debouncedSearch}"</span>
+                      <span className="text-light-1 font-semibold">"{debouncedSearch}"</span>
                     </>
                   )}
                 </div>

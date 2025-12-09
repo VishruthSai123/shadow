@@ -182,7 +182,7 @@ const AdminDashboard = () => {
               className="stat-card"
             >
               <div className="flex items-center gap-4">
-                <div className="stat-icon-wrapper bg-purple-500/10">
+                <div className="stat-icon-wrapper bg-primary-500/10">
                   <img
                     src="/assets/icons/chat.svg"
                     alt="comments"

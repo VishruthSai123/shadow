@@ -147,8 +147,8 @@ const PostStats = ({ post, userId, onCommentClick, showComments = true }: PostSt
   return (
     <>
       <div
-        className={`flex justify-between items-center z-20 ${containerStyles}`}>
-        <div className="flex gap-4 mr-5">
+        className={`flex justify-between items-center z-20 pt-4 ${containerStyles}`}>
+        <div className="flex gap-6">
           {/* Like Button */}
           <div className="flex gap-2 items-center">
             <img
@@ -158,10 +158,10 @@ const PostStats = ({ post, userId, onCommentClick, showComments = true }: PostSt
                   : "/assets/icons/like.svg"
               }`}
               alt="like"
-              width={20}
-              height={20}
+              width={22}
+              height={22}
               onClick={(e) => handleLikePost(e)}
-              className="cursor-pointer"
+              className="cursor-pointer hover:scale-110 transition-transform"
             />
             <p className="small-medium lg:base-medium">{likes.length}</p>
           </div>
@@ -172,9 +172,9 @@ const PostStats = ({ post, userId, onCommentClick, showComments = true }: PostSt
               <img
                 src="/assets/icons/chat.svg"
                 alt="comment"
-                width={20}
-                height={20}
-                className="cursor-pointer"
+                width={22}
+                height={22}
+                className="cursor-pointer hover:scale-110 transition-transform"
                 onClick={onCommentClick}
               />
               <p className="small-medium lg:base-medium">
@@ -188,9 +188,9 @@ const PostStats = ({ post, userId, onCommentClick, showComments = true }: PostSt
             <img
               src="/assets/icons/share.svg"
               alt="share"
-              width={20}
-              height={20}
-              className="cursor-pointer"
+              width={22}
+              height={22}
+              className="cursor-pointer hover:scale-110 transition-transform"
               onClick={(e) => handleSharePost(e)}
             />
           </div>
@@ -200,9 +200,9 @@ const PostStats = ({ post, userId, onCommentClick, showComments = true }: PostSt
           <img
             src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
             alt="save"
-            width={20}
-            height={20}
-            className="cursor-pointer"
+            width={22}
+            height={22}
+            className="cursor-pointer hover:scale-110 transition-transform"
             onClick={(e) => handleSavePost(e)}
           />
         </div>

@@ -215,7 +215,7 @@ export async function signInUser(user: { email: string; password: string }) {
           // Sign them out immediately
           await supabase.auth.signOut();
           
-          const deactivatedError = new Error('Your account has been deactivated. If you believe this was done in error, please contact support at support@socialens.in for assistance.');
+          const deactivatedError = new Error('Your account has been deactivated. If you believe this was done in error, please contact support at support@shadow.in for assistance.');
           deactivatedError.name = 'AccountDeactivatedError';
           throw deactivatedError;
         }
@@ -725,7 +725,7 @@ export async function searchUsers(searchTerm: string, limit: number = 50) {
 
 // Initial admin emails - these will be the super admins who can add others
 const INITIAL_ADMIN_EMAILS = [
-  'admin@socialens.com',
+  'admin@shadow.com',
   'maazajaz1234@gmail.com', // Your email here
   'test@admin.com',
 ];

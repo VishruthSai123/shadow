@@ -149,7 +149,7 @@ function ResetPasswordForm() {
         <section className="flex flex-1 justify-center items-center flex-col py-10">
           <div className="sm:w-420 flex-center flex-col">
             <Image
-              src="/assets/images/logo.svg"
+              src="/assets/images/shadow_logo.png"
               alt="logo"
               width={270}
               height={36}
@@ -191,7 +191,7 @@ function ResetPasswordForm() {
         <section className="flex flex-1 justify-center items-center flex-col py-10">
           <div className="sm:w-420 flex-center flex-col">
             <Image
-              src="/assets/images/logo.svg"
+              src="/assets/images/shadow_logo.png"
               alt="logo"
               width={270}
               height={36}
@@ -225,7 +225,7 @@ function ResetPasswordForm() {
         <Form {...form}>
           <div className="sm:w-420 flex-center flex-col">
             <Image
-              src="/assets/images/logo.svg"
+              src="/assets/images/shadow_logo.png"
               alt="logo"
               width={270}
               height={36}

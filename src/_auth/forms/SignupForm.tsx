@@ -185,7 +185,7 @@ const SignupForm = () => {
     <Form {...form}>
   <div className="w-full max-w-md px-6 flex flex-col items-center mt-6 sm:mt-0 sm:pt-1 sm:justify-center sm:min-h-full">
       <img 
-        src="/assets/images/logo.svg" 
+        src="/assets/images/shadow_logo.png" 
         alt="logo" 
         className="w-56 h-auto mb-6 sm:w-64 sm:mb-8"
       />
@@ -194,7 +194,7 @@ const SignupForm = () => {
         Create a new account
       </h2>
       <p className="text-light-3 text-xs text-center mb-2 sm:text-sm sm:mb-3">
-        To use SociaLens, Please enter your details
+        To use Shadow, Please enter your details
       </p>
 
       <form

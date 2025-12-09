@@ -180,13 +180,13 @@ const NotificationBell = () => {
             <div className="p-4 border-b border-dark-4/50 bg-gradient-to-r from-dark-2 to-dark-3">
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-light-1 flex items-center gap-2">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-primary-500">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-light-1">
                     <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   Notifications
                 </h3>
                 {notifications.filter(n => !n.read).length > 0 && (
-                  <span className="text-xs bg-primary-500/20 text-primary-400 px-2 py-1 rounded-full">
+                  <span className="text-xs bg-primary-500/20 text-light-1 px-2 py-1 rounded-full">
                     {notifications.filter(n => !n.read).length} new
                   </span>
                 )}
@@ -239,7 +239,7 @@ const NotificationBell = () => {
                         <div className="flex-1 min-w-0">
                           <div className="text-sm text-light-1">
                             {n.user?.username && (
-                              <span className="font-semibold text-primary-400">{n.user.username}</span>
+                              <span className="font-semibold text-light-1">{n.user.username}</span>
                             )}
                             {n.user?.username ? ' ' : ''}
                             <span className="text-light-2">{n.message}</span>

@@ -86,7 +86,7 @@ const NotificationPopup = ({ notification, onClose, onAction }: NotificationPopu
       case 'comment':
         return 'from-green-500 to-emerald-600';
       case 'follow':
-        return 'from-purple-500 to-violet-600';
+        return 'from-primary-500 to-rose-600';
       default:
         return 'from-primary-500 to-primary-600';
     }

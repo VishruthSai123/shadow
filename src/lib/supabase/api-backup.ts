@@ -536,7 +536,7 @@ export async function getUsers(limit?: number) {
 
 // Initial admin emails - these will be the super admins who can add others
 const INITIAL_ADMIN_EMAILS = [
-  'admin@socialens.com',
+  'admin@shadow.com',
   'maazajaz1234@gmail.com', // Your email here
   'test@admin.com',
 ];

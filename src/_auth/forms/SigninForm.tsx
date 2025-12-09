@@ -73,10 +73,10 @@ const SigninForm = () => {
       }
 
       if (error?.name === 'AccountDeactivatedError') {
-        setSignInError("🚫 Your account has been deactivated. If you believe this was done in error, please contact support at support@socialens.in for assistance.");
+        setSignInError("🚫 Your account has been deactivated. If you believe this was done in error, please contact support at support@shadow.in for assistance.");
         toast({
           title: "Account Deactivated",
-          description: "Your account has been deactivated. Please contact support at support@socialens.in if you believe this was done in error.",
+          description: "Your account has been deactivated. Please contact support at support@shadow.in if you believe this was done in error.",
           variant: "destructive",
         });
         return;
@@ -92,7 +92,7 @@ const SigninForm = () => {
                    error.message.includes('Invalid email or password')) {
           setSignInError("❌ Invalid credentials. Please check your email and password and try again.");
         } else if (error.message.includes('account has been deactivated')) {
-          setSignInError("🚫 Your account has been deactivated. If you believe this was done in error, please contact support at support@socialens.in for assistance.");
+          setSignInError("🚫 Your account has been deactivated. If you believe this was done in error, please contact support at support@shadow.in for assistance.");
         } else {
           setSignInError(`❌ Login failed: ${error.message}`);
         }
@@ -106,7 +106,7 @@ const SigninForm = () => {
     <Form {...form}>
   <div className="w-full max-w-md px-6 flex flex-col items-center mt-20 sm:mt-0 sm:pt-2 sm:justify-center sm:min-h-full">
         <img 
-          src="/assets/images/logo.svg" 
+          src="/assets/images/shadow_logo.png" 
           alt="logo" 
           className="w-56 h-auto mb-6 sm:w-64 sm:mb-8"
         />

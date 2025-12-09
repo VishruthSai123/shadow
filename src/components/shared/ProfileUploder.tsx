@@ -96,7 +96,7 @@ const ProfileUploader = ({ fieldChange, mediaUrl }: ProfileUploaderProps) => {
             alt="image"
             className="h-24 w-24 rounded-full object-cover object-top"
           />
-          <p className="text-primary-500 small-regular md:bbase-semibold">
+          <p className="text-light-2 small-regular md:bbase-semibold">
             Change profile photo (Max 2MB)
           </p>
         </div>
