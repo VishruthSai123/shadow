@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { QueryProvider } from '../../src/lib/react-query/QueryProvider';
 import { AuthProvider } from '../../src/context/SupabaseAuthContext';
 import SignupForm from '../../src/_auth/forms/SignupForm';
+import Loader from '../../src/components/shared/Loader';
 import { Toaster } from '../../src/components/ui/toaster';
 
 export default function SignUpPage() {
@@ -14,7 +15,11 @@ export default function SignUpPage() {
   }, []);
 
   if (!isClient) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex-center w-full h-screen bg-dark-1">
+        <Loader />
+      </div>
+    );
   }
 
   return (

@@ -14,6 +14,7 @@ import { Button } from '../../src/components/ui/button';
 import { Input } from '../../src/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../src/components/ui/form';
 import { useToast } from '../../src/hooks/use-toast';
+import Loader from '../../src/components/shared/Loader';
 
 const ResetPasswordSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -324,7 +325,7 @@ function ResetPasswordForm() {
 
 export default function ResetPassword() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="flex-center w-full h-screen bg-dark-1"><Loader /></div>}>
       <ResetPasswordForm />
     </Suspense>
   );

@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../../../src/components/ui/button';
+import Loader from '../../../src/components/shared/Loader';
 
 function AuthCodeErrorContent() {
   const searchParams = useSearchParams();
@@ -66,7 +67,7 @@ function AuthCodeErrorContent() {
 
 export default function AuthCodeError() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="flex-center w-full h-screen bg-dark-1"><Loader /></div>}>
       <AuthCodeErrorContent />
     </Suspense>
   );

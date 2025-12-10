@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useUserContext } from "@/context/SupabaseAuthContext";
+import Loader from "@/components/shared/Loader";
 
 export default function AuthLayout() {
   const { isAuthenticated, isLoading } = useUserContext();
@@ -20,7 +21,11 @@ export default function AuthLayout() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex-center w-full h-screen bg-dark-1">
+        <Loader />
+      </div>
+    );
   }
 
   if (isAuthenticated) {

@@ -7,6 +7,7 @@ import { useUserActivity } from '../hooks/useUserActivity';
 import Topbar from '../components/shared/Topbar';
 import LeftSidebar from '../components/shared/LeftSidebar';
 import Bottombar from '../components/shared/Bottombar';
+import Loader from '../components/shared/Loader';
 
 // Hook to detect if we're on desktop
 function useIsDesktop() {
@@ -43,7 +44,11 @@ const ClientLayoutWrapper = ({ children }: ClientLayoutWrapperProps) => {
   }, []);
 
   if (!isClient || isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex-center w-full h-screen bg-dark-1">
+        <Loader />
+      </div>
+    );
   }
 
   if (!isAuthenticated) {

@@ -6,6 +6,7 @@ import { AuthProvider, useUserContext } from '../../src/context/SupabaseAuthCont
 import Topbar from '../../src/components/shared/Topbar';
 import LeftSidebar from '../../src/components/shared/LeftSidebar';
 import Bottombar from '../../src/components/shared/Bottombar';
+import Loader from '../../src/components/shared/Loader';
 import { Toaster } from '../../src/components/ui/toaster';
 import { useRouter } from 'next/navigation';
 
@@ -42,8 +43,8 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="flex-center w-full h-screen">
-        <div>Loading...</div>
+      <div className="flex-center w-full h-screen bg-dark-1">
+        <Loader />
       </div>
     );
   }
@@ -75,7 +76,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (!isClient) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex-center w-full h-screen bg-dark-1">
+        <Loader />
+      </div>
+    );
   }
 
   return (

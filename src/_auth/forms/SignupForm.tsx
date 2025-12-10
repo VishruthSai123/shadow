@@ -286,7 +286,7 @@ const SignupForm = () => {
           >
             {isCreatingAccount || isSigningInUser ? (
               <div className="flex-center gap-2">
-                <Loader /> Loading...
+                <Loader />
               </div>
             ) : availabilityStatus.email === 'taken' || availabilityStatus.username === 'taken' ? (
               "Please fix availability issues"

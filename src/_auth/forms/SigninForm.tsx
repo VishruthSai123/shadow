@@ -187,7 +187,7 @@ const SigninForm = () => {
           <Button type="submit" className="shad-button_primary mt-3 sm:mt-4">
             {isPending || isUserLoading ? (
               <div className="flex-center gap-2">
-                <Loader /> Loading...
+                <Loader />
               </div>
             ) : (
               "Log in"
