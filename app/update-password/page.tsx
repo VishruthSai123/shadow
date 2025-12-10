@@ -180,7 +180,7 @@ export default function UpdatePassword() {
             </div>
           </div>
         </section>
-        <div className="hidden xl:block h-screen w-1/2 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/side-img.svg')]" />
+        <div className="hidden xl:block h-screen w-1/2 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/side-img.png')]" />
       </div>
     );
   }
@@ -270,7 +270,7 @@ export default function UpdatePassword() {
         </Form>
       </section>
 
-      <div className="hidden xl:block h-screen w-1/2 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/side-img.svg')]" />
+      <div className="hidden xl:block h-screen w-1/2 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/side-img.png')]" />
     </div>
   );
 }

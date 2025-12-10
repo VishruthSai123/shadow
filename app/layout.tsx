@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   title: 'Shadow',
   description: 'A social media application powered by Next.js and Supabase',
   icons: {
-    icon: '/assets/images/tablogo.ico',
+    icon: '/assets/images/shadow-icon.png',
+    apple: '/assets/images/shadow-icon.png',
   },
 }
 
