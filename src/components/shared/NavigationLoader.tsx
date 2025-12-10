@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 const NavigationLoader = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {

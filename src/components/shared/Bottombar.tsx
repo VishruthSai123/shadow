@@ -47,20 +47,17 @@ const Bottombar = () => {
           <Link
             key={`bottombar-${link.label}`}
             href={link.route}
-            className="flex-center flex-col gap-0.5 p-2 transition-all duration-200">
-            <div className={`p-1.5 rounded-lg transition-all duration-200 ${isActive ? 'bg-primary-500/20' : ''}`}>
+            className="flex-center flex-col p-2 transition-all duration-200">
+            <div className={`p-2 rounded-xl transition-all duration-200 ${isActive ? 'bg-primary-500/20' : ''}`}>
               <img
                 src={link.imgURL}
                 alt={link.label}
-                width={18}
-                height={18}
+                width={24}
+                height={24}
                 className={`transition-all duration-200 ${isActive ? 'brightness-0 invert-0 sepia saturate-[10000%] hue-rotate-[335deg]' : 'opacity-70'}`}
                 style={isActive ? { filter: 'brightness(0) saturate(100%) invert(21%) sepia(96%) saturate(4949%) hue-rotate(342deg) brightness(91%) contrast(94%)' } : {}}
               />
             </div>
-            <p className={`text-[10px] transition-all duration-200 ${isActive ? 'text-primary-500 font-semibold' : 'text-light-3'}`}>
-              {link.label}
-            </p>
           </Link>
         );
       })}
