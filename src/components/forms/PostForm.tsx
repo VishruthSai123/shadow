@@ -149,9 +149,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
           name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">Add Location</FormLabel>
+              <FormLabel className="shad-form_label">Add Location <span className="text-light-4 text-xs font-normal">(optional)</span></FormLabel>
               <FormControl>
-                <Input type="text" className="shad-input" {...field} />
+                <Input type="text" className="shad-input" placeholder="Where was this taken?" {...field} />
               </FormControl>
               <FormMessage className="shad-form_message" />
             </FormItem>

@@ -213,7 +213,7 @@
 
   /* File uploader */
   .file_uploader-img {
-    @apply h-64 sm:h-80 lg:h-[480px] w-full rounded-xl md:rounded-[24px] object-cover object-top;
+    @apply w-full max-h-[70vh] rounded-xl md:rounded-[24px] object-contain;
   }
 
   .file_uploader-label {
