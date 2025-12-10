@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -22,6 +22,8 @@ const ForgotPasswordPage = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [sentEmail, setSentEmail] = useState("");
+  const [resendCooldown, setResendCooldown] = useState(0);
   const supabase = createClient();
 
   const form = useForm<z.infer<typeof ForgotPasswordValidation>>({
@@ -60,7 +62,9 @@ const ForgotPasswordPage = () => {
 
       if (error) throw error;
 
+      setSentEmail(email);
       setEmailSent(true);
+      setResendCooldown(60); // 60 second cooldown
       toast({
         title: "Reset link sent! 📧",
         description: "Check your email and click the link to reset your password.",
@@ -75,6 +79,41 @@ const ForgotPasswordPage = () => {
       setIsLoading(false);
     }
   };
+
+  const handleResendEmail = async () => {
+    if (resendCooldown > 0 || !sentEmail) return;
+    
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(sentEmail, {
+        redirectTo: `${window.location.origin}/auth/callback?type=recovery`,
+      });
+
+      if (error) throw error;
+
+      setResendCooldown(60);
+      toast({
+        title: "Email resent! 📧",
+        description: "Please check your inbox and spam folder.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error resending email",
+        description: error.message || "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Countdown timer for resend cooldown
+  React.useEffect(() => {
+    if (resendCooldown > 0) {
+      const timer = setTimeout(() => setResendCooldown(resendCooldown - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [resendCooldown]);
 
   if (emailSent) {
     return (
@@ -92,15 +131,46 @@ const ForgotPasswordPage = () => {
                 ✅ Email Sent!
               </h2>
               <p className="text-light-2 mb-4">
-                We've sent a password reset link to your email.
+                We've sent a password reset link to <span className="text-primary-500 font-medium">{sentEmail}</span>
               </p>
-              <p className="text-light-3 text-sm">
+              <p className="text-light-3 text-sm mb-4">
                 Click the link in your email to set a new password. The link will expire in 1 hour.
               </p>
+              <p className="text-light-4 text-xs mb-4">
+                Don't see the email? Check your spam folder.
+              </p>
+              
+              {/* Resend Button */}
+              <Button
+                onClick={handleResendEmail}
+                disabled={resendCooldown > 0 || isLoading}
+                variant="outline"
+                className="w-full border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white"
+              >
+                {isLoading ? (
+                  <Loader />
+                ) : resendCooldown > 0 ? (
+                  `Resend in ${resendCooldown}s`
+                ) : (
+                  "Resend Email"
+                )}
+              </Button>
             </div>
-            <Link href="/sign-in" className="text-primary-500 mt-6 hover:underline">
-              Back to Sign In
-            </Link>
+            
+            <div className="flex flex-col gap-2 mt-6">
+              <button 
+                onClick={() => {
+                  setEmailSent(false);
+                  setSentEmail("");
+                }}
+                className="text-light-3 text-sm hover:text-light-2"
+              >
+                Try a different email
+              </button>
+              <Link href="/sign-in" className="text-primary-500 hover:underline">
+                Back to Sign In
+              </Link>
+            </div>
           </div>
         </section>
         <div className="hidden xl:block h-screen w-1/2 bg-no-repeat bg-cover bg-center bg-[url('/assets/images/side-img.svg')]" />
