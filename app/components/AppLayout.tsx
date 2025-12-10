@@ -54,12 +54,12 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="w-full md:flex">
+    <div className="w-full md:flex bg-dark-1">
       <Topbar />
       {/* Only render sidebar on desktop to prevent mobile interference */}
       {isDesktop && <LeftSidebar />}
 
-      <section className="flex flex-1 h-full">
+      <section className="flex flex-1 h-full w-full bg-dark-1">
         {children}
       </section>
 

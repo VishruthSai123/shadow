@@ -239,7 +239,14 @@
 
   /* Left sidebar */
   .leftsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between w-[270px] bg-dark-2 h-screen sticky top-0 z-40;
+    @apply px-6 py-10 flex-col justify-between w-[270px] bg-dark-2 h-screen sticky top-0 z-40;
+    display: none !important;
+  }
+
+  @media (min-width: 768px) {
+    .leftsidebar {
+      display: flex !important;
+    }
   }
 
   .leftsidebar-link {
