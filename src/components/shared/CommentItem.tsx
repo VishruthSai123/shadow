@@ -6,7 +6,6 @@ import { Comment, likeComment, unlikeComment, deleteComment, getCommentLikeStatu
 import { multiFormatDateString } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import CommentForm from "@/components/forms/CommentForm";
-import Image from "next/image";
 import Link from "next/link";
 
 type CommentItemProps = {
@@ -88,12 +87,16 @@ const CommentItem = ({ comment, onCommentUpdated, level = 0 }: CommentItemProps)
     <div className={`flex gap-3 ${level > 0 ? 'ml-8' : ''}`}>
       {/* User Avatar */}
       <Link href={`/profile/${comment.user.id}`}>
-        <Image
+        <img
           src={comment.user.image_url || "/assets/icons/profile-placeholder.svg"}
           alt={comment.user.name}
           width={level > 0 ? 28 : 32}
           height={level > 0 ? 28 : 32}
-          className="rounded-full"
+          className="rounded-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/assets/icons/profile-placeholder.svg";
+          }}
         />
       </Link>
 

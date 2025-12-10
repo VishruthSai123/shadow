@@ -250,7 +250,11 @@ const QuickComment = ({ postId, onCommentAdded }: QuickCommentProps) => {
             alt="Your profile"
             width={32}
             height={32}
-            className="rounded-full"
+            className="rounded-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "/assets/icons/profile-placeholder.svg";
+            }}
           />
           
           <div className="flex-1 flex items-center gap-2">
@@ -323,7 +327,11 @@ const QuickComment = ({ postId, onCommentAdded }: QuickCommentProps) => {
                       alt={commentItem.user.name}
                       width={28}
                       height={28}
-                      className="rounded-full mt-1"
+                      className="rounded-full mt-1 object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "/assets/icons/profile-placeholder.svg";
+                      }}
                     />
                   </Link>
 
@@ -505,7 +513,11 @@ const QuickComment = ({ postId, onCommentAdded }: QuickCommentProps) => {
                                   alt={reply.user.name}
                                   width={24}
                                   height={24}
-                                  className="rounded-full"
+                                  className="rounded-full object-cover"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = "/assets/icons/profile-placeholder.svg";
+                                  }}
                                 />
                               </Link>
                               <div className="bg-dark-4 rounded-lg px-3 py-1 flex-1">

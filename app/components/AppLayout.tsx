@@ -9,9 +9,30 @@ import Bottombar from '../../src/components/shared/Bottombar';
 import { Toaster } from '../../src/components/ui/toaster';
 import { useRouter } from 'next/navigation';
 
+// Hook to detect if we're on desktop
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    
+    // Check on mount
+    checkIsDesktop();
+    
+    // Listen for resize
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
+
+  return isDesktop;
+}
+
 function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useUserContext();
   const router = useRouter();
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -34,7 +55,8 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-full md:flex">
       <Topbar />
-      <LeftSidebar />
+      {/* Only render sidebar on desktop to prevent mobile interference */}
+      {isDesktop && <LeftSidebar />}
 
       <section className="flex flex-1 h-full">
         {children}

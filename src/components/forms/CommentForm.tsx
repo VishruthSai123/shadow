@@ -5,7 +5,6 @@ import { useUserContext } from "@/context/SupabaseAuthContext";
 import { createComment } from "@/lib/supabase/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 
 type CommentFormProps = {
   postId: string;
@@ -65,12 +64,16 @@ const CommentForm = ({
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-3 w-full">
-      <Image
+      <img
         src={user.image_url || "/assets/icons/profile-placeholder.svg"}
         alt="Your profile"
         width={32}
         height={32}
-        className="rounded-full"
+        className="rounded-full object-cover"
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.src = "/assets/icons/profile-placeholder.svg";
+        }}
       />
       
       <div className="flex-1 flex items-center gap-2">
